@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 namespace Com.StinkyBrotherStudio.Orbu
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : Photon.PunBehaviour
     {
 
 
@@ -18,9 +18,20 @@ namespace Com.StinkyBrotherStudio.Orbu
         /// <summary>
         /// Called when the local player left the room. We need to load the launcher scene.
         /// </summary>
-        public void OnLeftRoom()
+        override public void OnLeftRoom()
         {
+            LeaveRoom();
             SceneManager.LoadScene(0);
+            
+        }
+
+        public override void OnPhotonPlayerDisconnected(PhotonPlayer other)
+        {
+            Debug.Log("OnPhotonPlayerDisconnected() " + other.NickName); // seen when other disconnects
+
+            LeaveRoom();
+            SceneManager.LoadScene(0);
+           
         }
 
 

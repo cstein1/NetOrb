@@ -21,7 +21,15 @@ namespace Com.StinkyBrotherStudio.Orbu
         public PhotonLogLevel Loglevel;
 
         string _gameVersion = "1";
-        
+
+        /// <summary>
+        /// Keep track of the current process. Since connection is asynchronous and is based on several callbacks from Photon,
+        /// we need to keep track of this to properly adjust the behavior when we receive call back by Photon.
+        /// Typically this is used for the OnConnectedToMaster() callback.
+        /// </summary>
+        bool isConnecting;
+
+
         void Awake()
         {
             // #NotImportant
@@ -53,6 +61,7 @@ namespace Com.StinkyBrotherStudio.Orbu
         /// </summary>
         public void Connect()
         {
+            isConnecting = true;
             progressLabel.SetActive(true);
             controlPanel.SetActive(false);
             // we check if we are connected or not, we join if we are, else we initiate the connection to the server.
@@ -72,9 +81,12 @@ namespace Com.StinkyBrotherStudio.Orbu
 
         public override void OnConnectedToMaster()
         {
-            Debug.Log("Attempted Connect to master");
-            // #Critical: The first we try to do is to join a potential existing room. If there is, good, else, we'll be called back with OnPhotonRandomJoinFailed()
-            PhotonNetwork.JoinRandomRoom();
+            if (isConnecting)
+            {
+                Debug.Log("Attempted Connect to master");
+                // #Critical: The first we try to do is to join a potential existing room. If there is, good, else, we'll be called back with OnPhotonRandomJoinFailed()
+                PhotonNetwork.JoinRandomRoom();
+            }
         }
 
         public override void OnDisconnectedFromPhoton()
@@ -93,7 +105,11 @@ namespace Com.StinkyBrotherStudio.Orbu
 
         public override void OnJoinedRoom()
         {
-            Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room.");
+            Debug.Log("Joined Room");
+
+            // #Critical
+            // Load the Room Level.
+            PhotonNetwork.LoadLevel("Game");
         }
 
         #endregion
