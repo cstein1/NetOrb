@@ -11,7 +11,6 @@ namespace Com.StinkyBrotherStudio.Orbu
     public class GameManager : Photon.PunBehaviour
     {
 
-
         #region Photon Messages
 
 

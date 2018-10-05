@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/Poop_Face_McGee/Desktop/NetOrb.exe
+C:/Users/cstein/Desktop/NetOrb.exe
 SceneListBegin?
 Assets/Scenes/Lobby.unity
 Assets/Scenes/Game.unity
@@ -191,6 +191,7 @@ aac9c55ae7ba4b95b852a7d9c191acd1 Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 fd1e15b01c6e8d9c3c753ad322216267 Assembly-CSharp.dll:.PhotonLagSimulationGui
 0a006f3734181ba8b26758f0866152c0 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 a2651694e7b6c8dd699b038f729bf69b Assembly-CSharp.dll:.SupportLogger
+a032d10127c69f972112ce3ceab751c2 Assembly-CSharp.dll:.OptionsMenuController
 45408ba338308c31fb2453abc6b827e1 Assembly-CSharp.dll:.ShowStatusWhenConnecting
 0dd5a5498a86898723d72fa57d634012 Assembly-CSharp.dll:.PickupItemSimple
 cfec3e0ab4cb682dcc806738d7ffdd46 Assembly-CSharp.dll:.ManualPhotonViewAllocator
