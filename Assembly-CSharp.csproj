@@ -130,6 +130,8 @@
     <Compile Include="Assets\PhotonChatApi\ChatState.cs" />
     <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
     <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
+    <Compile Include="Assets\Scripts\CardPhysics\Draggable.cs" />
+    <Compile Include="Assets\Scripts\CardPhysics\DropZone.cs" />
     <Compile Include="Assets\Scripts\Lobby\Launcher.cs" />
     <Compile Include="Assets\Scripts\Lobby\PlayerNameInputField.cs" />
     <Compile Include="Assets\Scripts\Room\GameManager.cs" />
