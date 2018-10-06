@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114759590201539780}
   - component: {fileID: 114613106651965496}
   m_Layer: 5
-  m_Name: Zone
+  m_Name: LocalZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
 --- !u!222 &222471836364359050
 CanvasRenderer:
