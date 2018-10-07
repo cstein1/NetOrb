@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerListing : MonoBehaviour {
 
-    public PhotonPlayer photonPlayer
+    public PhotonPlayer PhotonPlayer
     {
         get; private set;
     }
@@ -14,7 +14,8 @@ public class PlayerListing : MonoBehaviour {
 
     public void ApplyPhotonPlayer(PhotonPlayer photonPlayer)
     {
-        PlayerName.text = photonPlayer.NickName;
+        PhotonPlayer = photonPlayer;
+        PlayerName.text = PhotonPlayer.NickName;
     }
 
 }

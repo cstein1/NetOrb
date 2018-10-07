@@ -20,6 +20,11 @@ public class PlayerLayoutGroup : MonoBehaviour {
     //Called by Photon whenever YOU join room
     private void OnJoinedRoom()
     {
+        foreach(Transform child in this.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         MainCanvasManager.Instance.CurrentRoomCanvas.transform.SetAsLastSibling();
 
         PhotonPlayer[] photonPlayers = PhotonNetwork.playerList;
@@ -29,6 +34,21 @@ public class PlayerLayoutGroup : MonoBehaviour {
         }
     }
     
+    // Called by Photon whenever master client is switched
+    private void OnClientMasterSwitched(PhotonPlayer newMaterClient)
+    {
+        if (PhotonNetwork.playerList.Length == 1)
+            PhotonNetwork.SetMasterClient(PhotonNetwork.playerList[0]);
+        else
+            PhotonNetwork.LeaveRoom();
+    }
+
+    //Called by Photon when ANY player joins room
+    private void OnPhotonPlayerConnected(PhotonPlayer photonPlayer)
+    {
+        PlayerJoinedRoom(photonPlayer);
+    }
+
     //Called by Photon when ANY player leaves room
     private void OnPhotonPlayerDisconnected(PhotonPlayer photonPlayer)
     {
@@ -37,7 +57,7 @@ public class PlayerLayoutGroup : MonoBehaviour {
 
     private void PlayerLeftRoom(PhotonPlayer photonPlayer)
     {
-        int index = PlayerListings.FindIndex(x => x.photonPlayer == photonPlayer);
+        int index = PlayerListings.FindIndex(x => x.PhotonPlayer == photonPlayer);
         if(index != -1)
         {
             Destroy(PlayerListings[index].gameObject);
@@ -57,5 +77,21 @@ public class PlayerLayoutGroup : MonoBehaviour {
         playerListing.ApplyPhotonPlayer(photonPlayer);
 
         PlayerListings.Add(playerListing);
+    }
+
+
+    //This will be something else in the end
+    public void OnClickRoomState()
+    {
+        if (!PhotonNetwork.isMasterClient)
+            return;
+
+        PhotonNetwork.room.IsOpen = !PhotonNetwork.room.IsOpen;
+        PhotonNetwork.room.IsVisible = PhotonNetwork.room.IsOpen;
+    }
+
+    public void OnClickLeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
     }
 }

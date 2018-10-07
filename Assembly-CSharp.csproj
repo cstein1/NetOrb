@@ -146,8 +146,6 @@
     <Compile Include="Assets\Scripts\Lobby\MainCanvasManager.cs" />
     <Compile Include="Assets\Scripts\Lobby\Networking\LobbyNetwork.cs" />
     <Compile Include="Assets\Scripts\Lobby\Networking\PlayerNetwork.cs" />
-    <Compile Include="Assets\Scripts\Lobby\Old\Launcher.cs" />
-    <Compile Include="Assets\Scripts\Lobby\Old\PlayerNameInputField.cs" />
     <None Include="Assets\Photon Unity Networking\link.xml" />
     <None Include="Assets\Photon Unity Networking\readme.txt" />
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
