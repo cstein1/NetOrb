@@ -38,4 +38,11 @@ MonoBehaviour:
   - RequestForPickupTimes
   - RPC_LoadedGameScene
   - RPC_LoadGameOthers
+  - RPC_CreatePlayer
+  - MoveFromCleanup
+  - MoveFromEnd
+  - MoveFromExecution
+  - MoveFromSelect
+  - MoveFromZip
+  - ChangeToNextPhase
   DisableAutoOpenWizard: 1

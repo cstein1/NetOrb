@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerNetwork : MonoBehaviour {
@@ -39,7 +40,7 @@ public class PlayerNetwork : MonoBehaviour {
 
     private void MasterLoadedGame()
     {
-        PlayersInGame = 1;
+        PhotonView.RPC("RPC_LoadedGameScene", PhotonTargets.MasterClient);
         PhotonView.RPC("RPC_LoadGameOthers", PhotonTargets.Others);
     }
 
@@ -58,9 +59,17 @@ public class PlayerNetwork : MonoBehaviour {
     private void RPC_LoadedGameScene()
     {
         PlayersInGame++;
-        if(PlayersInGame == PhotonNetwork.playerList.Length)
+        if(PlayersInGame == PhotonNetwork.playerList.Length) // All Players In Game
         {
             print("Game Scene now has full room of players");
+            //PhotonView.RPC("RPC_CreatePlayer", PhotonTargets.All); // This will have to draw people cards?
         }
+    }
+
+    [PunRPC]
+    private void RPC_CreatePlayer()
+    {
+        
+        //PhotonNetwork.Instantiate(Path.Combine("Prefabs", "NewPlayer"), Vector3.up, Quaternion.identity, 0);
     }
 }
